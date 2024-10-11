@@ -1,16 +1,14 @@
 
-import './App.css';
 import FetchApi from './FetchApi';
+import Pokemon from './Pokemon';
 
 function App() {
   return (
     <div className="App">
-     <h1>Wel Come To Pokemon card in React Js...!</h1>
-     <br/>
-     <br/>
-     <br/>
+    
+     {/* <FetchApi /> */}
 
-     <FetchApi />
+     <Pokemon />
 
     </div>
   );
