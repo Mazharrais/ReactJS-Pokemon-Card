@@ -6,7 +6,10 @@ import React, { useEffect, useState } from 'react';
 const Pokemon = () => {
 
   const [pokimon, setPokimon] = useState([])
-console.log(pokimon);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  //  console.log(pokimon);
 
    const API = "https://pokeapi.co/api/v2/pokemon?limit=24";
 
@@ -25,10 +28,12 @@ console.log(pokimon);
 
     const pokiResponse = await Promise.all(detailPoki);
     setPokimon(pokiResponse)
+    setLoading(false)
     console.log(pokiResponse);
     
 
    } catch (error){
+    setError(error)
     console.log(error);
     
    }
@@ -39,6 +44,22 @@ console.log(pokimon);
         fetchPokemon();
 
     },[])
+
+
+    if(loading) {
+        return(
+            <div>
+            <h1>loading...!</h1>
+            </div>
+        )
+    }
+    if(error){
+        return(
+            <div>
+                <h1>Error : {error.message}</h1>
+            </div>
+        )
+    }
 
   return (
     <>
